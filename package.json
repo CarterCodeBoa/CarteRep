@@ -1,41 +1,23 @@
-<!-- Replace 'YOUR_FORM_ID' with the actual ID you get from a service like Formspree, or use Formspree's setup -->
-<form id="myForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-  
-  <!-- Your existing inputs go here (Make sure they all have a 'name' attribute!) -->
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  
-  <button type="submit">Submit Data</button>
-</form>
-
-<script>
-  const form = document.getElementById('myForm');
-  
-  form.addEventListener('submit', async function(e) {
-    // 1. Prevent the default page redirect so we can control the form behavior
-    e.preventDefault();
-    
-    // 2. Gather the form data
-    const formData = new FormData(form);
-    
-    // 3. Send the data to the processing service in the background
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        alert('Data sent successfully!');
-        form.reset(); // <-- 4. This clears the form completely!
-      } else {
-        alert('Oops! There was a problem submitting your form.');
-      }
-    } catch (error) {
-      alert('Network error. Please try again later.');
-    }
-  });
-</script>
+{
+  "name": "carterep",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.460.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}
